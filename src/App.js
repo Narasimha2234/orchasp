@@ -1,24 +1,64 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import ThemeProviderComp from './components/ThemeProviderComp';
+import { Box } from '@mui/material';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Header from './components/header/Header';
+import SideNav from './components/sidenav/SideNav';
+import Footer from './components/footer/Footer';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import Service from './components/services/Service';
+import Investors from './components/investors/Investors';
+import IndustriesComp from './components/industries/Industries';
+import KnowledgeHubComp from './components/knowledgeHub/KnowledgeHubComp';
+import AI_AND_DS from './components/blogs/AI_AND_DS';
+import IOT_COMP from './components/blogs/IOT_COMP';
+import Media from './components/media/Media';
+import Careers from './components/careers/Careers';
+import ContactUs from './components/contactus/ContactUs';
+import Disclaimers from './components/disclaimer/Disclaimers';
+import PrivacyPolicy from './components/privacypolicy/PrivacyPolicy';
+import TermsOfUse from './components/termsofuse/TermsOfUSe';
 
 function App() {
+  const [show,setShow]=useState(false)
+   const handleshow=()=>{ 
+      setShow(!show)
+   }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProviderComp>
+    {/* <CssBaseline/> */}
+    <BrowserRouter>
+   
+     <Box className="App">
+    <Header handleShow={handleshow}/>
+    <Box className="content">
+        <SideNav handleShow={handleshow} show={show}></SideNav>       
+       <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/services' element={<Service/>}/>
+        <Route path='/industries' element={<IndustriesComp/>}/>
+        <Route path='/investors' element={<Investors/>}/>
+        <Route path='/knowledge' element={<KnowledgeHubComp/>}/>
+        <Route path='/blog/1' element={<AI_AND_DS/>}/>
+        <Route path='/blog/2' element={<IOT_COMP/>}/>
+        <Route path='/media' element={<Media/>}/>
+        <Route path='/careers' element={<Careers/>}/>
+        <Route path='/patner_with_us' element={<ContactUs/>}/>
+        <Route path='/disclaimer' element={<Disclaimers/>} />
+        <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
+        <Route path='/termsofuse' element={<TermsOfUse/>}/>
+       </Routes>
+    </Box>
+   <Box >
+   <Footer/>
+   </Box>
+    </Box>
+    </BrowserRouter>
+   </ThemeProviderComp>
   );
 }
 

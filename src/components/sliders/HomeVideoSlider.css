@@ -1,0 +1,23 @@
+
+
+.slick-dots.custom-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .slick-dots.custom-dots .custom-dot {
+    width: 40px; /* Adjust as needed */
+    height: 8px; /* Adjust as needed */
+    background-color: rgba(255, 255, 255, 0.5); /* Light color for bars */
+    border-radius: 4px; /* Rounded corners for bars */
+    margin: 0 4px; /* Space between bars */
+  }
+  
+  .slick-dots.custom-dots .slick-active .custom-dot {
+    background-color: white; /* Active bar color */
+  }
+  
