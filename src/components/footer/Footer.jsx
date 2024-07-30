@@ -45,7 +45,7 @@ const Footer = () => {
               Contact Us
             </Typography>
             <Stack spacing={0.5}>
-              <Typography sx={{textDecoration:"none"}} component={Link} variant="body2" color="textSecondary">Contact Us</Typography>
+              <Typography sx={{textDecoration:"none"}} component={Link} to={"/contactus"} variant="body2" color="textSecondary">Contact Us</Typography>
               <Typography sx={{textDecoration:"none"}} component={Link} to={"/careers"} variant="body2" color="textSecondary">Careers</Typography>
               <Typography sx={{textDecoration:"none"}} component={Link} to={"/industries"} variant="body2" color="textSecondary">Industries</Typography>
               <Typography sx={{textDecoration:"none"}} component={Link} to={"/patner_with_us"} variant="body2" color="textSecondary">Partner With Us</Typography>

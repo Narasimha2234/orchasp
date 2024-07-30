@@ -1,9 +1,9 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import ThemeProviderComp from './components/ThemeProviderComp';
 import { Box } from '@mui/material';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './components/header/Header';
 import SideNav from './components/sidenav/SideNav';
 import Footer from './components/footer/Footer';
@@ -17,13 +17,16 @@ import AI_AND_DS from './components/blogs/AI_AND_DS';
 import IOT_COMP from './components/blogs/IOT_COMP';
 import Media from './components/media/Media';
 import Careers from './components/careers/Careers';
-import ContactUs from './components/contactus/ContactUs';
+
 import Disclaimers from './components/disclaimer/Disclaimers';
 import PrivacyPolicy from './components/privacypolicy/PrivacyPolicy';
 import TermsOfUse from './components/termsofuse/TermsOfUSe';
+import LetsSpeak from './components/letsspeak/LetsSpeak';
+import PatnerWithUs from './components/patnerwithus/PatnerWithUs';
 
 function App() {
   const [show,setShow]=useState(false)
+  
    const handleshow=()=>{ 
       setShow(!show)
    }
@@ -47,10 +50,13 @@ function App() {
         <Route path='/blog/2' element={<IOT_COMP/>}/>
         <Route path='/media' element={<Media/>}/>
         <Route path='/careers' element={<Careers/>}/>
-        <Route path='/patner_with_us' element={<ContactUs/>}/>
+        <Route path='/patner_with_us' element={<PatnerWithUs/>}/>
         <Route path='/disclaimer' element={<Disclaimers/>} />
         <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
         <Route path='/termsofuse' element={<TermsOfUse/>}/>
+        <Route path='/letsSpeack' element={<LetsSpeak/>}/>
+        <Route path='/contactus' element={<LetsSpeak/>}/>
+        <Route path='*' element={<Home/>}/>
        </Routes>
     </Box>
    <Box >

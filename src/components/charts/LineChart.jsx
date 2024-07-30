@@ -1,4 +1,5 @@
 // LineChart.js
+
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import {
@@ -17,7 +18,6 @@ const LineChart = ({ data }) => {
     labels: data.labels,
     datasets: [
       {
-        
         data: data.values,
         borderColor: 'rgba(75, 192, 192, 1)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
