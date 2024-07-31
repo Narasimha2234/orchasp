@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent, Typography, Stack, Link } from '@mui/material';
 
 const CareerCard = ({ career }) => {
+  
   return (
     <Card sx={{ width: '90%', m: 2 }}>
       <CardContent>

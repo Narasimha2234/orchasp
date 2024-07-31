@@ -1,16 +1,18 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
-const path = require('path');
+const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
 const port = 5000;
 
-app.use(express.static(path.join(__dirname, 'build')));
+
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, 'build')));
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -22,16 +24,14 @@ const transporter = nodemailer.createTransport({
 // user: "orchaspltd@gmail.com info@orchasp.com"", 
 // pass: "fqvp fhzm gwkr ssdd",  
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+
 
 app.post("/send-email", (req, res) => {
   const { name, email, mobile, message } = req.body;
 
   const mailOptions = {
     from: email, 
-    to: "narasimhaodugu082@gmail.com", 
+    to: "info@orchasp.com", 
     subject: "New Contact  From Orchasp.in",
     text: `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nMessage: ${message}`,
   };
@@ -44,6 +44,10 @@ app.post("/send-email", (req, res) => {
     }
     res.status(200).send("Email sent: " + info.response);
   });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 

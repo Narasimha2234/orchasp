@@ -26,7 +26,7 @@ import PatnerWithUs from './components/patnerwithus/PatnerWithUs';
 
 function App() {
   const [show,setShow]=useState(false)
-  
+
    const handleshow=()=>{ 
       setShow(!show)
    }
@@ -56,7 +56,7 @@ function App() {
         <Route path='/termsofuse' element={<TermsOfUse/>}/>
         <Route path='/letsSpeack' element={<LetsSpeak/>}/>
         <Route path='/contactus' element={<LetsSpeak/>}/>
-        <Route path='*' element={<Home/>}/>
+        
        </Routes>
     </Box>
    <Box >
