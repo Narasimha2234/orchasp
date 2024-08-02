@@ -141,6 +141,9 @@ const PatnerWithUs = () => {
                 {...register("name", { required: "Your Name is Required" })}
                 error={!!errors.name}
                 helperText={errors.name?.message}
+                InputProps={{
+                  style: { backgroundColor: "whitesmoke" },
+                }}
               />
             </Box>
             <Box sx={{ marginBottom: "15px" }}>
@@ -158,6 +161,9 @@ const PatnerWithUs = () => {
                 })}
                 error={!!errors.email}
                 helperText={errors.email?.message}
+                InputProps={{
+                  style: { backgroundColor: "whitesmoke" },
+                }}
               />
             </Box>
             <Box sx={{ marginBottom: "15px" }}>
@@ -174,6 +180,9 @@ const PatnerWithUs = () => {
                 })}
                 error={!!errors.mobile}
                 helperText={errors.mobile?.message}
+                InputProps={{
+                  style: { backgroundColor: "whitesmoke" },
+                }}
               />
             </Box>
             <Box sx={{ marginBottom: "15px" }}>
@@ -183,9 +192,12 @@ const PatnerWithUs = () => {
                 variant="outlined"
                 multiline
                 rows={4}
-                {...register("message", { required: "Please add some message" })}
+                {...register("message", { required: "Please brief us about your Requirment" })}
                 error={!!errors.message}
                 helperText={errors.message?.message}
+                InputProps={{
+                  style: { backgroundColor: "whitesmoke" },
+                }}
               />
             </Box>
             <Button

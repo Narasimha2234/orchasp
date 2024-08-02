@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { Box, TextField, Button, Typography, Stack, Snackbar, Slide } from "@mui/material";
+import { Box, TextField, Button, Typography, Stack } from "@mui/material";
 import { styled } from "@mui/system";
 import axios from "axios";
 
@@ -38,9 +38,9 @@ const FormSection = styled(Box)({
 
 const IframeContainer = styled(Box)({
   width: "100%",
-  height: "70vh", 
-  maxWidth: "800px", 
-  margin: "20px auto", 
+  height: "70vh",
+  maxWidth: "800px",
+  margin: "20px auto",
   boxSizing: "border-box",
   overflow: "hidden",
   iframe: {
@@ -51,7 +51,6 @@ const IframeContainer = styled(Box)({
 });
 
 const LetsSpeak = () => {
-
   const {
     register,
     handleSubmit,
@@ -62,16 +61,11 @@ const LetsSpeak = () => {
     try {
       await axios.post("http://localhost:5000/send-email", data);
       alert("Email sent successfully");
-     
     } catch (error) {
       console.error("There was an error sending the email:", error);
       alert("Failed to send email");
     }
   };
-
- 
- 
-
 
   return (
     <Stack>
@@ -117,8 +111,12 @@ const LetsSpeak = () => {
       </Box>
       <FormContainer>
         <FormSection>
-          <Typography variant="h4" textAlign={"center"} color={"primary"}>Drop us a hello here</Typography>
-          <Typography variant="h6" gutterBottom>If you are seeking solutions that will help accelerate your business growth at breakneck speed. welcome aboard. Connect with your message and we will get back in no time.</Typography>
+          <Typography variant="h4" textAlign={"center"} color={"primary"}>
+            Drop us a hello here
+          </Typography>
+          <Typography variant="h6" gutterBottom>
+            If you are seeking solutions that will help accelerate your business growth at breakneck speed. welcome aboard. Connect with your message and we will get back in no time.
+          </Typography>
           <Typography variant="h5" component="h2" color="primary" gutterBottom>
             ENQUIRE NOW
           </Typography>
@@ -131,6 +129,9 @@ const LetsSpeak = () => {
                 {...register("name", { required: "your name is required" })}
                 error={!!errors.name}
                 helperText={errors.name?.message}
+                InputProps={{
+                  style: { backgroundColor: "whitesmoke" },
+                }}
               />
             </Box>
             <Box sx={{ marginBottom: "15px" }}>
@@ -148,6 +149,9 @@ const LetsSpeak = () => {
                 })}
                 error={!!errors.email}
                 helperText={errors.email?.message}
+                InputProps={{
+                  style: { backgroundColor: "whitesmoke" },
+                }}
               />
             </Box>
             <Box sx={{ marginBottom: "15px" }}>
@@ -164,18 +168,25 @@ const LetsSpeak = () => {
                 })}
                 error={!!errors.mobile}
                 helperText={errors.mobile?.message}
+                InputProps={{
+                  style: { backgroundColor: "whitesmoke" },
+                }}
               />
             </Box>
             <Box sx={{ marginBottom: "15px" }}>
               <TextField
                 fullWidth
                 label="Message"
+              
                 variant="outlined"
                 multiline
                 rows={4}
-                {...register("message", { required: "please add some message" })}
+                {...register("message", { required: "Please brief us about your Requirment" })}
                 error={!!errors.message}
                 helperText={errors.message?.message}
+                InputProps={{
+                  style: { backgroundColor: "whitesmoke" },
+                }}
               />
             </Box>
             <Button
@@ -196,25 +207,19 @@ const LetsSpeak = () => {
           </form>
         </FormSection>
         <ImageSection>
-          <FormImage
-            src="https://orchasp.com/wp-content/uploads/2021/07/Baner-2-Image-1.png"
-            alt="Laptop"
-          />
+          <FormImage src="https://orchasp.com/wp-content/uploads/2021/07/Baner-2-Image-1.png" alt="Laptop" />
         </ImageSection>
       </FormContainer>
       <IframeContainer>
         <iframe
-        title="orchasp"
+          title="orchasp"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.804850228722!2d78.50521837493673!3d17.469052083432132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9a581d14c259%3A0x2b35f73c8eea725c!2sOrchasp%20Limited!5e0!3m2!1sen!2sin!4v1722231516975!5m2!1sen!2sin"
           allowFullScreen=""
           loading="lazy"
         ></iframe>
       </IframeContainer>
-     
     </Stack>
   );
 };
 
 export default LetsSpeak;
-
-

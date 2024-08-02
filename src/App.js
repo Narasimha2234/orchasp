@@ -24,6 +24,7 @@ import TermsOfUse from './components/termsofuse/TermsOfUSe';
 import LetsSpeak from './components/letsspeak/LetsSpeak';
 import PatnerWithUs from './components/patnerwithus/PatnerWithUs';
 
+
 function App() {
   const [show,setShow]=useState(false)
 
@@ -40,6 +41,7 @@ function App() {
     <Box className="content">
         <SideNav handleShow={handleshow} show={show}></SideNav>       
        <Routes>
+       
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/services' element={<Service/>}/>
