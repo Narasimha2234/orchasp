@@ -4,8 +4,23 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Footer = () => {
+  const hoverVariant = {
+    visible: {
+      x: 10,
+      color: "blue",
+      transition: {
+        type: "spring",
+        stiffness: 150,
+        duration: 0.4,
+      },
+    },
+  };
+
+  const TypoAnimation = motion(Typography);
+
   return (
     <Box
       component="footer"
@@ -19,8 +34,8 @@ const Footer = () => {
         width: "100%",
       }} 
     >
-      <Divider variant="middle" sx={{border:"2px solid skyblue"}} />
-      <Container maxWidth="lg" sx={{mt:2,ml:10}}>
+      <Divider variant="middle" sx={{ border: "2px solid skyblue" }} />
+      <Container maxWidth="lg" sx={{ mt: 2, ml: { xs: 0, sm: 10 } }}>
         <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12} sm={3} textAlign={{ xs: 'center', sm: 'left' }}>
             <Typography
@@ -72,7 +87,10 @@ const Footer = () => {
 
           <Grid item xs={12} sm={3} textAlign={{ xs: 'center', sm: 'left' }}>
             <Stack spacing={0.5}>
-              <Typography
+              <TypoAnimation
+                variants={hoverVariant}
+                initial="initial"
+                whileHover="visible"
                 sx={{ textDecoration: "none" }}
                 component={Link}
                 to={"/contactus"}
@@ -80,8 +98,11 @@ const Footer = () => {
                 color="textSecondary"
               >
                 Contact Us
-              </Typography>
-              <Typography
+              </TypoAnimation>
+              <TypoAnimation
+                variants={hoverVariant}
+                initial="initial"
+                whileHover="visible"
                 sx={{ textDecoration: "none" }}
                 component={Link}
                 to={"/careers"}
@@ -89,8 +110,11 @@ const Footer = () => {
                 color="textSecondary"
               >
                 Careers
-              </Typography>
-              <Typography
+              </TypoAnimation>
+              <TypoAnimation
+                variants={hoverVariant}
+                initial="initial"
+                whileHover="visible"
                 sx={{ textDecoration: "none" }}
                 component={Link}
                 to={"/industries"}
@@ -98,8 +122,11 @@ const Footer = () => {
                 color="textSecondary"
               >
                 Industries
-              </Typography>
-              <Typography
+              </TypoAnimation>
+              <TypoAnimation
+                variants={hoverVariant}
+                initial="initial"
+                whileHover="visible"
                 sx={{ textDecoration: "none" }}
                 component={Link}
                 to={"/patner_with_us"}
@@ -107,41 +134,41 @@ const Footer = () => {
                 color="textSecondary"
               >
                 Partner With Us
-              </Typography>
-              <Grid item xs={12} sm={3} spacing={0.5}>
-                <Typography
-                  variant="h6"
-                  gutterBottom
-                  sx={{ fontWeight: "bold", width: '200px', mt: { xs: 2, sm: 3 } }}
-                >
-                  Social Media
-                </Typography>
-                <Stack direction={"row"} justifyContent={{ xs: 'center', sm: 'flex-start' }} spacing={1}>
-                  <IconButton
-                    sx={{ "&:hover": { color: "blue" } }}
-                    href="https://www.facebook.com/OrchaspLimited/"
-                    target="_blank"
-                  >
-                    <FacebookIcon />
-                  </IconButton>
-                  <IconButton
-                    sx={{ "&:hover": { color: "blue" } }}
-                    href="https://x.com/i/flow/login?redirect_after_login=%2Forchasp"
-                    target="_blank"
-                  >
-                    <TwitterIcon />
-                  </IconButton>
-                  <IconButton
-                    sx={{ "&:hover": { color: "blue" } }}
-                    href="https://www.linkedin.com/company/orchasp-limited/"
-                    target="_blank"
-                  >
-                    <LinkedInIcon />
-                  </IconButton>
-                </Stack>
-              </Grid>
+              </TypoAnimation>
+            </Stack>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ fontWeight: "bold", width: { xs: 'auto', sm: '200px' }, mt: { xs: 2, sm: 3 } }}
+            >
+              Social Media
+            </Typography>
+            <Stack direction={"row"} justifyContent={{ xs: 'center', sm: 'flex-start' }} spacing={1}>
+              <IconButton
+                sx={{ "&:hover": { color: "blue" } }}
+                href="https://www.facebook.com/OrchaspLimited/"
+                target="_blank"
+              >
+                <FacebookIcon />
+              </IconButton>
+              <IconButton
+                sx={{ "&:hover": { color: "blue" } }}
+                href="https://x.com/i/flow/login?redirect_after_login=%2Forchasp"
+                target="_blank"
+              >
+                <TwitterIcon />
+              </IconButton>
+              <IconButton
+                sx={{ "&:hover": { color: "blue" } }}
+                href="https://www.linkedin.com/company/orchasp-limited/"
+                target="_blank"
+              >
+                <LinkedInIcon />
+              </IconButton>
             </Stack>
           </Grid>
+
+          
 
           <Grid item xs={12} sm={3} textAlign={{ xs: 'center', sm: 'left' }}>
             <Typography
@@ -153,7 +180,10 @@ const Footer = () => {
               Legal
             </Typography>
             <Stack spacing={0.5}>
-              <Typography
+              <TypoAnimation 
+                variants={hoverVariant}
+                initial="initial"
+                whileHover="visible"
                 component={Link}
                 to={"/privacypolicy"}
                 color="textSecondary"
@@ -161,8 +191,11 @@ const Footer = () => {
                 variant="body2"
               >
                 Privacy Policy
-              </Typography>
-              <Typography
+              </TypoAnimation>
+              <TypoAnimation
+                variants={hoverVariant}
+                initial="initial"
+                whileHover="visible"
                 component={Link}
                 to={"/termsofuse"}
                 color="textSecondary"
@@ -170,8 +203,11 @@ const Footer = () => {
                 variant="body2"
               >
                 Terms of use
-              </Typography>
-              <Typography
+              </TypoAnimation>
+              <TypoAnimation
+                variants={hoverVariant}
+                initial="initial"
+                whileHover="visible"
                 component={Link}
                 to={"/disclaimer"}
                 color="textSecondary"
@@ -179,7 +215,7 @@ const Footer = () => {
                 variant="body2"
               >
                 Disclaimer
-              </Typography>
+              </TypoAnimation>
             </Stack>
           </Grid>
         </Grid>

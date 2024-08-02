@@ -40,7 +40,7 @@ const Home = () => {
           <CardGrid cardData={cardData} />
         </Box>
       </Box>
-      {ai_iot}
+      <AiAndIot/>
       <WithResultsWeRise/>
       <Box mt={6} sx={{ height: { xs: "auto", sm: "300px" }, width: "90%", margin: "auto" }}>
         <Typography variant='h6' mt={3} mb={3} textAlign="center">Hello There, Investor. Or Should We Say Partner-In-Engineering Businesses Real Time?</Typography>
@@ -127,14 +127,20 @@ const futureBlock = (
 );
 
 export const CardGrid = ({ cardData }) => {
-  
+  const AnimatedCard=motion(Card)
   return (
     <Box sx={{ width: '90%', margin: "auto", backgroundColor: '#92E2FF' }} >
       <Grid container spacing={3}>
         {cardData.map((card, index) => (
           <Grid item xs={12} sm={6} lg={3} key={index}>
-            <Card sx={{ width: '100%', backgroundColor: 'transparent', boxShadow: 'none' }} >
+            <AnimatedCard sx={{ width: '100%', backgroundColor: 'transparent', boxShadow: 'none' }}
+               whileHover={{
+                scale:1.05,
+                color:"darkblue"
+              }}
+            >
               <CardMedia
+               
                 component="img"
                 height="300"
                 width="300"
@@ -147,7 +153,7 @@ export const CardGrid = ({ cardData }) => {
                   {card.title}
                 </Typography>
               </CardContent>
-            </Card>
+            </AnimatedCard>
           </Grid>
         ))}
       </Grid>
@@ -226,65 +232,87 @@ const WithResultsWeRise = ()=>{
 );
 }
 
-const ai_iot = (
+const AiAndIot = ()=>{
+  const ref=useRef()
+  const inView=useInView(ref,{once:true})
+  const animationControl=useAnimation()
+  useEffect(()=>{
+    if(inView){
+      animationControl.start("visible")
+    }
+  },[inView])
+  const AnimatedGrid=motion(Grid)
+  return(
   <Box sx={{ backgroundColor: "#0747a6", overflowX: "hidden" }} >
     <Container margin={"20px"} sx={{ backgroundColor: "#0747a6" }}>
-      <Grid container spacing={2}>
-        {/* First Section */}
-        <Grid item xs={12}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" }, // Adjusts layout based on screen size
-              alignItems: "center",
-              padding: 2,
-              backgroundColor: "#0747a6",
+        <Grid container spacing={2} ref={ref}
+         
+        >
+         
+          <AnimatedGrid item xs={12}
+            
+            whileHover={{
+              scale:1.05
             }}
           >
-            <Grid item xs={12} sm={6}>
-              <img
-                src={"https://orchasp.com/wp-content/uploads/2021/07/09-Object-1.png"}
-                alt="Application Development"
-                style={{ width: "100%", height: "auto", objectFit: "cover" }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Box sx={{ marginLeft: { sm: 7 }, textAlign: { xs: "center", sm: "left" } }}>
-                <Typography
-                  color={"#0bb7e5"}
-                  variant="h5"
-                  component="h2"
-                  fontSize={"24px"}
-                >
-                  How Artificial Intelligence helps in structuring data
-                </Typography>
-                <Typography
-                  variant="body1"
-                  component="p"
-                  sx={{
-                    marginTop: 1,
-                    textAlign: "justify",
-                    fontSize: "17px",
-                    fontWeight: "200",
-                    color: "#ffff",
-                  }}
-                >
-                  The Internet provides masses of information that was
-                  impossible to obtain just a few years ago. The growing use of
-                  smartphones, Internet of Things (IoT) devices and customer
-                  relationship management (CRM) systems, as well as data
-                  gathered from online shopping behavior, social media profiles
-                  and activity, such as likes and dislikes, product
-                  reviews, tagged and shared content, have together resulted in a
-                  truly vast data universe in the digital space today.
-                </Typography>
-              </Box>
-            </Grid>
-          </Box>
-        </Grid>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", sm: "row" }, 
+                alignItems: "center",
+                padding: 2,
+                backgroundColor: "#0747a6",
+              }}
+            >
+              <Grid item xs={12} sm={6}>
+                <img
+                  src={"https://orchasp.com/wp-content/uploads/2021/07/09-Object-1.png"}
+                  alt="Application Development"
+                  style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Box sx={{ marginLeft: { sm: 7 }, textAlign: { xs: "center", sm: "left" } }}>
+                  <Typography
+                    color={"#0bb7e5"}
+                    variant="h5"
+                    component="h2"
+                    fontSize={"24px"}
+                  >
+                    How Artificial Intelligence helps in structuring data
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{
+                      marginTop: 1,
+                      textAlign: "justify",
+                      fontSize: "17px",
+                      fontWeight: "200",
+                      color: "#ffff",
+                    }}
+                  >
+                    The Internet provides masses of information that was
+                    impossible to obtain just a few years ago. The growing use of
+                    smartphones, Internet of Things (IoT) devices and customer
+                    relationship management (CRM) systems, as well as data
+                    gathered from online shopping behavior, social media profiles
+                    and activity, such as likes and dislikes, product
+                    reviews, tagged and shared content, have together resulted in a
+                    truly vast data universe in the digital space today.
+                  </Typography>
+                </Box>
+              </Grid>
+            </Box>
+          </AnimatedGrid>
 
 
-        <Grid item xs={12}>
+        <AnimatedGrid item xs={12} mb={4}
+            
+             whileHover={{
+              scale:1.05
+             }}
+            >
           <Box
             sx={{
               display: "flex",
@@ -334,7 +362,7 @@ const ai_iot = (
               />
             </Grid>
           </Box>
-        </Grid>
+        </AnimatedGrid>
       </Grid>
     </Container>
 
@@ -375,7 +403,7 @@ const ai_iot = (
 
     </Box>
   </Box>
-);
+);}
 
 const StockInfo = () => {
   const ref=useRef()

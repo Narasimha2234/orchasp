@@ -3,6 +3,7 @@ import React from 'react';
 import about_video from "../../assets/about/Orchasp-About-us.mp4";
 import { CardGrid } from '../home/Home';
 import { executive_directors, independent_directors, leaderShip, non_executive_and_Non_independent, orchasp_additional_service, orchasp_services } from './aboutData';
+import { motion } from 'framer-motion';
 
 const About = () => {
   return (
@@ -125,10 +126,13 @@ const About = () => {
 export default About;
 
 const DataCards = ({ data }) => {
+  const GridAnimation=motion(Grid)
   return (
     <Grid container spacing={3}>
       {data.map((card, index) => (
-        <Grid item xs={12} sm={6} lg={4} key={index}>
+        <GridAnimation item xs={12} sm={6} lg={4} key={index}
+          whileHover={{scale:1.05}}
+        >
           <Card sx={{ width: '100%', backgroundColor: 'transparent', boxShadow: 'none' }}>
             <CardMedia
               component="img"
@@ -144,7 +148,7 @@ const DataCards = ({ data }) => {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
+        </GridAnimation>
       ))}
     </Grid>
   );
