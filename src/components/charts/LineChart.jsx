@@ -1,7 +1,8 @@
 // LineChart.js
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import {
   Chart as ChartJS,
   LineElement,
@@ -14,6 +15,29 @@ import {
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip);
 
 const LineChart = ({ data }) => {
+  const ref=useRef()
+  const inView=useInView(ref)
+  const animationControl=useAnimation()
+  useEffect(()=>{
+    if(inView){
+      animationControl.start("visible")
+    }else{
+      animationControl.start("initial")
+    }
+  })
+    const slideupVariant={
+      initial:{
+        opacity:0,
+        y:100
+      },
+      visible:{
+        opacity:1,
+        y:0,
+        transition:{ 
+          duration:2
+        }      
+      }
+    }
   const chartData = {
     labels: data.labels,
     datasets: [
@@ -58,9 +82,9 @@ const LineChart = ({ data }) => {
   };
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <motion.div ref={ref} variants={slideupVariant} animate={animationControl} initial="initial"  style={{ height: '100%', width: '100%' }}>
       <Line data={chartData} options={options} />
-    </div>
+    </motion.div>
   );
 };
 

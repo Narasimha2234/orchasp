@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const nodemailer = require("nodemailer");
 const path = require("path");
@@ -7,8 +8,6 @@ const cors = require("cors");
 const app = express();
 const port = 5000;
 
-
-
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -17,14 +16,10 @@ app.use(express.static(path.join(__dirname, 'build')));
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "orchaspltd@gmail.com", 
-    pass: "fqvp fhzm gwkr ssdd",  
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS,
   },
 });
-// user: "orchaspltd@gmail.com info@orchasp.com"", 
-// pass: "fqvp fhzm gwkr ssdd",  
-
-
 
 app.post("/send-email", (req, res) => {
   const { name, email, mobile, message } = req.body;
@@ -32,10 +27,9 @@ app.post("/send-email", (req, res) => {
   const mailOptions = {
     from: email, 
     to: "info@orchasp.com", 
-    subject: "New Contact  From Orchasp.in",
+    subject: "New Contact From Orchasp.in",
     text: `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nMessage: ${message}`,
   };
-
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
@@ -49,7 +43,6 @@ app.post("/send-email", (req, res) => {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

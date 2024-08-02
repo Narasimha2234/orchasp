@@ -63,7 +63,7 @@ export const cardData = [
 
   export const statsData = [
     { number: 400, label: "Clients Served" },
-    { number: 26, label: "Years Of Experience" },
+    { number: 30, label: "Years Of Experience" },
     { number: 39, label: "Applications Engineered" },
     { number: 825, label: "Resources Skilled" },
   ];

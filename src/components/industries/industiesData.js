@@ -47,7 +47,7 @@ export const Industries = [
     },
     {
       id: 5,
-      img: "https://orchasp.com/wp-content/uploads/2021/07/Image-05-2.png",
+      img: "https://orchasp.com/wp-content/uploads/2021/07/Image-05-1.png",
       header: "Healthcare",
       content: [
         "Billing",

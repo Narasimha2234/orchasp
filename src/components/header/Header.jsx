@@ -8,6 +8,7 @@ import { useTheme as useMuiTheme } from '@mui/material/styles';
 import { useTheme } from '../ThemeProviderComp';
 import img from "../../assets/logo/ORCHASP Final Logo.png";
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Header = (props) => {
   const { toggleTheme, mode } = useTheme();
@@ -25,10 +26,25 @@ const Header = (props) => {
     setAnchorEl(null);
   };
 
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   const isCurrentPage = (path) => {
     return location.pathname === path;
   };
-
+  const Btn=motion(Button)
+  const btnVarient={
+    whileHover:{
+      color:"blue",
+      y:-10,
+      transition:{
+        duration:1,
+        type:"spring",
+        stiffness:"190"
+      }
+    }
+  }
   return (
     <AppBar component="nav" sx={{ backgroundColor: theme.palette.background.default, color: theme.palette.text.primary }}>
       <Toolbar>
@@ -38,81 +54,112 @@ const Header = (props) => {
               component="img"
               src={img}
               alt="Logo"
-              sx={{ height: 80 }}
+              sx={{ height: 110 }}
             />
-            <Typography variant="h5">ORCHASP</Typography>
+            <Typography variant="h5" color={"primary"} fontWeight={"bold"} fontSize={30}>Orchasp Limited</Typography>
           </Stack>
         </Box>
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexDirection: 'column', alignItems: 'flex-end' }}>
           <Stack direction="row" spacing={3} sx={{ mt: 1 }}>
-            <Button variant='text' color='inherit' component={Link} to={"/media"} sx={{ border: isCurrentPage("/media") ? '1px solid' : 'none' }}>
-              <Typography variant='subtitle2' fontSize={"0.875rem"}>Media</Typography>
-            </Button>
-            <Button variant='text' color='inherit' component={Link} to={"/careers"}  sx={{ border: isCurrentPage("/careers") ? '1px solid' : 'none' }}>
-              <Typography variant='subtitle2' fontSize={"0.875rem"}>Careers</Typography>
-            </Button>
+            <Btn  size='small' variant='text' color='inherit' component={Link} to={"/media"} sx={{ borderBottom: isCurrentPage("/media") ? '3px solid blue' : 'none',borderRadius:"0px"  }}
+             variants={btnVarient}
+            whileHover="whileHover"
+            >
+           
+              Media
+            </Btn>
+            
+            <Btn  size='small' variant='text' color='inherit' component={Link} to={"/careers"} sx={{ borderBottom: isCurrentPage("/careers") ? '3px solid blue' : 'none',borderRadius:"0px"  }}
+             variants={btnVarient}
+            whileHover="whileHover"
+            >
+              Careers
+            </Btn>
           </Stack>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end' }} mb={1}>
-            <Button
+            <Btn
+             variants={btnVarient}
+            whileHover="whileHover"
               color='inherit'
               component={Link}
               to={"/"}
-              sx={{ border: isCurrentPage("/") ? '1px solid' : 'none' }}
+              sx={{ borderBottom: isCurrentPage("/") ? '3px solid blue' : 'none' ,ml:1,borderRadius:"0px" }}
+              size='small'
+              
             >
               home
-            </Button>
-            <Button
+            </Btn>
+            <Btn
+             variants={btnVarient}
+             whileHover="whileHover"
+             
+              
+             size='small'
               color='inherit'
               component={Link}
               to={"/about"}
-              sx={{ border: isCurrentPage("/about") ? '1px solid' : 'none' }}
+              sx={{ borderBottom: isCurrentPage("/about") ? '3px solid blue' : 'none',ml:1 ,borderRadius:"0px" }}
             >
               about Us
-            </Button>
-            <Button
+            </Btn>
+            <Btn
+            variants={btnVarient}
+             whileHover="whileHover"
+             size='small'
               color='inherit'
               component={Link}
               to={"/investors"}
-              sx={{ border: isCurrentPage("/investors") ? '1px solid' : 'none' }}
+              sx={{ borderBottom: isCurrentPage("/investors") ? '3px solid blue' : 'none',ml:1 ,borderRadius:"0px" }}
             >
               Investors
-            </Button>
-            <Button
+            </Btn>
+            
+            <Btn
+             variants={btnVarient}
+            whileHover="whileHover"
+             size='small'
               color='inherit'
               component={Link}
               to={"/industries"}
-              sx={{ border: isCurrentPage("/industries") ? '1px solid' : 'none' }}
+              sx={{ borderBottom: isCurrentPage("/industries") ? '3px solid blue' : 'none',ml:1 ,borderRadius:"0px" }}
             >
               Industries
-            </Button>
-            <Button
+            </Btn>
+            <Btn
+             variants={btnVarient}
+            whileHover="whileHover"
               color='inherit'
+               size='small'
               component={Link}
               to={"/services"}
-              sx={{ border: isCurrentPage("/services") ? '1px solid' : 'none' }}
+              sx={{ borderBottom: isCurrentPage("/services") ? '3px solid blue' : 'none' ,ml:1,borderRadius:"0px" }}
             >
               services
-            </Button>
+            </Btn>
             <Box
+             
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <Button
+              <Btn
+               variants={btnVarient}
+                whileHover="whileHover"
                 color='inherit'
+                 size='small'
                 disableElevation={true}
                 aria-controls={anchorEl ? 'platform-menu' : undefined}
                 aria-haspopup="true"
-             
               >
                 Platform<ArrowDropDownIcon />
-              </Button>
+              </Btn>
               <Menu
                 id="platform-menu"
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
                 MenuListProps={{
                   'aria-labelledby': 'platform-button',
-                  onMouseLeave: handleMouseLeave
+                  onMouseLeave: handleMenuClose
                 }}
               >
                 <MenuItem sx={{ width: "900px", backgroundColor: "white" }}>
@@ -137,20 +184,26 @@ const Header = (props) => {
                 </MenuItem>
               </Menu>
             </Box>
-            <Button
+            <Btn
+             variants={btnVarient}
+            whileHover="whileHover"
               color='inherit'
+               size='small'
               component={Link}
               to={"/knowledge"}
-              sx={{ border: isCurrentPage("/knowledge") ? '1px solid' : 'none' }}
+              sx={{ borderBottom: isCurrentPage("/knowledge") ? '3px solid blue' : 'none' ,ml:1,borderRadius:"0px" }}
             >
               Knowledge Hub
-            </Button>
-            <Button component={Link} to="/letsSpeack"
+            </Btn>
+            <Btn component={Link} to="/letsSpeack"
+             variants={btnVarient}
+            whileHover="whileHover"
               color='inherit'
-              sx={{ border: isCurrentPage("/letsSpeack") ? '1px solid' : 'none' }}
+               size='small'
+              sx={{ borderBottom: isCurrentPage("/letsSpeack") ? '3px solid blue' : 'none',ml:1,borderRadius:"0px" }}
             >
               let's Speak
-            </Button>
+            </Btn>
           </Box>
         </Box>
         <IconButton color='inherit' onClick={handleShow} sx={{ display: { sm: 'none' } }}>

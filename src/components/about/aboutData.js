@@ -96,13 +96,13 @@ export const executive_directors=[
         description:"He is Forty-Eight (48) years old. He is a commerce graduate and a member of the Institute of Cost and Works Accountants of India (qualified in the year 1998). He began his career with Orchasp as an Executive in Finance & Account. He has worked with a large retail chain in international markets as a Senior Financial Analyst before joining the Board of Orchasp. He has experience in, Finance, Accounts, Corporate Strategy, Financial Management, Taxation, Secretarial and International Trade Practices.He has been appointed a director of Orchasp since 30th June 2006. At present he is Managing Director and Chief Financial Officer of the Company. He is a promoter of the company and holds 78,04,371 shares of the company in his name as on March 31, 2023. ",
         
     },
-    {
-        id:2,
-        img:"https://orchasp.com/wp-content/uploads/2021/10/Shiva-kumar.jpg",
-        name:"Mr. Satya SivaKumar Kanakadandi ",
-        description:"He is Fifty-Six (56) years old. He is a science graduate. He has more than thirty-one (31) years of experience in Software Development, Training and Heading MIS Departments. He has been instrumental in launching various corporate training programs for universities, banks, and other training establishments.He has made significant contribution in setting up of the operations of the company since inception and has also been instrumental in providing a marketing base to the company and for delivering solutions in emerging technologies in yester years. At present he is Director Operations and Chief Operating Officer of Orchasp. He is a promoter of the company and holds 1,93,010 shares of the company in his name as on March 31, 2023. ",
+    // {
+    //     id:2,
+    //     img:"https://orchasp.com/wp-content/uploads/2021/10/Shiva-kumar.jpg",
+    //     name:"Mr. Satya SivaKumar Kanakadandi ",
+    //     description:"He is Fifty-Six (56) years old. He is a science graduate. He has more than thirty-one (31) years of experience in Software Development, Training and Heading MIS Departments. He has been instrumental in launching various corporate training programs for universities, banks, and other training establishments.He has made significant contribution in setting up of the operations of the company since inception and has also been instrumental in providing a marketing base to the company and for delivering solutions in emerging technologies in yester years. At present he is Director Operations and Chief Operating Officer of Orchasp. He is a promoter of the company and holds 1,93,010 shares of the company in his name as on March 31, 2023. ",
         
-    }
+    // }
 ]
 
 export const non_executive_and_Non_independent=[

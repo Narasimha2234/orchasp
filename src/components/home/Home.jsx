@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Card, CardContent, CardMedia, Container, Divider, Grid, Stack, Typography } from '@mui/material';
 import { bannerVideos, withResultsData, cardData, statsData, chartData } from './data';
 import futureVideo from "../../assets/home/Orchasp-Home-COLOUR-1.mp4"
@@ -8,6 +8,8 @@ import LineChart from '../charts/LineChart';
 import { styled, useTheme as useMuiTheme } from '@mui/material/styles';
 import ClientsCarousal from '../home/ClientsCarousal';
 import StockChart from '../charts/StockChart';
+import {  motion, useAnimation, useInView } from 'framer-motion';
+import AnimatedNumber from './AnimatedNumber';
 
 
 
@@ -39,7 +41,7 @@ const Home = () => {
         </Box>
       </Box>
       {ai_iot}
-      {WithResultsWeRise}
+      <WithResultsWeRise/>
       <Box mt={6} sx={{ height: { xs: "auto", sm: "300px" }, width: "90%", margin: "auto" }}>
         <Typography variant='h6' mt={3} mb={3} textAlign="center">Hello There, Investor. Or Should We Say Partner-In-Engineering Businesses Real Time?</Typography>
         <LineChart data={chartData}/>
@@ -125,6 +127,7 @@ const futureBlock = (
 );
 
 export const CardGrid = ({ cardData }) => {
+  
   return (
     <Box sx={{ width: '90%', margin: "auto", backgroundColor: '#92E2FF' }} >
       <Grid container spacing={3}>
@@ -152,8 +155,35 @@ export const CardGrid = ({ cardData }) => {
   );
 }
 
-const WithResultsWeRise = (
-  <Box sx={{ width: '90%', height: "65vh", margin: "auto", borderBottom: "1px solid", overflowX: "hidden", marginTop: "20px" }}>
+const WithResultsWeRise = ()=>{
+  const ref=useRef()
+  const isinView=useInView(ref)
+  const animationControl=useAnimation()
+
+  useEffect(()=>{
+    if(isinView){
+      animationControl.start("visible")
+    }else{
+      animationControl.start("initial")
+    }
+  },[isinView])
+ const slideupVariant={
+    initial:{
+      opacity:0,
+      y:110
+    },
+    visible:{
+      opacity:1,
+      y:0,
+      transition:{
+        
+        duration:2
+      }      
+    }
+
+ }
+  return(
+  <Box ref={ref} sx={{ width: '90%', height: "65vh", margin: "auto", borderBottom: "1px solid", overflowX: "hidden", marginTop: "20px" }}>
     <Box sx={{ textAlign: "center", marginBottom: 5 }}>
       <Typography variant='h4' color="primary">With Results, We Rise.</Typography>
       <Typography variant='h6' mt={2} mx={{ xs: 2, sm: 9 }}>
@@ -162,6 +192,7 @@ const WithResultsWeRise = (
       </Typography>
     </Box>
 
+    <motion.div variants={slideupVariant} initial="initial" animate={animationControl}>
     <Grid container spacing={2} sx={{ justifyContent: "center" }}>
       {withResultsData.map((each, index) => (
         <Grid item xs={12} sm={6} md={4} key={index}
@@ -190,8 +221,10 @@ const WithResultsWeRise = (
         </Grid>
       ))}
     </Grid>
+    </motion.div>
   </Box>
 );
+}
 
 const ai_iot = (
   <Box sx={{ backgroundColor: "#0747a6", overflowX: "hidden" }} >
@@ -324,7 +357,7 @@ const ai_iot = (
             <React.Fragment key={index}>
               <Grid item xs={12} md={3} lg={2} sx={{ textAlign: "center" }} mb={4}>
                 <Typography variant="h2" color="#0bb7e5">
-                  {stat.number}
+                <AnimatedNumber number={stat.number} />
                 </Typography>
                 <Typography variant="body1" color="#0bb7e5">
                   {stat.label}
@@ -344,7 +377,32 @@ const ai_iot = (
   </Box>
 );
 
-const StockInfo = () => (
+const StockInfo = () => {
+  const ref=useRef()
+  const inView=useInView(ref)
+  const animationControl=useAnimation()
+  useEffect(()=>{
+    if(inView){
+      animationControl.start("visible")
+    }else{
+      animationControl.start("initial")
+    }
+  })
+    const slideupVariant={
+      initial:{
+        opacity:0,
+        y:110
+      },
+      visible:{
+        opacity:1,
+        y:0,
+        transition:{ 
+          duration:2
+        }      
+      }
+    }
+  return(
+    <motion.div ref={ref} variants={slideupVariant} initial="initial" animate={animationControl} >
   <InfoBox>
     <Accordion defaultExpanded >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -438,12 +496,39 @@ const StockInfo = () => (
     </Accordion>
 
   </InfoBox>
+  </motion.div>
 
 );
+}
 
 
 
-const AnnualReports = () => (
+const AnnualReports = () =>{
+  const ref=useRef()
+  const inView=useInView(ref)
+  const animationControl=useAnimation()
+  useEffect(()=>{
+    if(inView){
+      animationControl.start("visible")
+    }else{
+      animationControl.start("initial")
+    }
+  })
+    const slideupVariant={
+      initial:{
+        opacity:0,
+        y:110
+      },
+      visible:{
+        opacity:1,
+        y:0,
+        transition:{ 
+          duration:2
+        }      
+      }
+    }
+   return(
+    <motion.div ref={ref} variants={slideupVariant} initial="initial" animate={animationControl} >
   <InfoBox>
     <Typography variant="h6" gutterBottom>
       Annual Reports
@@ -457,9 +542,37 @@ const AnnualReports = () => (
       2020-2021
     </Typography>
   </InfoBox>
+   </motion.div>
+ 
 );
+}
 
-const Announcements = () => (
+const Announcements = () => {
+  const ref=useRef()
+  const inView=useInView(ref)
+  const animationControl=useAnimation()
+  useEffect(()=>{
+    if(inView){
+      animationControl.start("visible")
+    }else{
+      animationControl.start("initial")
+    }
+  })
+    const slideupVariant={
+      initial:{
+        opacity:0,
+        y:110
+      },
+      visible:{
+        opacity:1,
+        y:0,
+        transition:{ 
+          duration:2
+        }      
+      }
+    }
+ return (
+ <motion.div ref={ref} variants={slideupVariant} initial="initial" animate={animationControl} >
   <InfoBox>
     <Typography padding={2} mt={1} textAlign={"left"} variant="h6" gutterBottom>
       Announcements
@@ -472,4 +585,6 @@ const Announcements = () => (
       Audited results within 60 days from the end of the quarter
     </Typography>
   </InfoBox>
+  </motion.div>
 );
+}
