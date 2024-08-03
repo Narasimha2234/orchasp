@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Box, TextField, Button, Typography, Stack } from "@mui/material";
 import { styled } from "@mui/system";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FormContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -56,11 +57,11 @@ const LetsSpeak = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const navigate=useNavigate()
   const onSubmit = async (data) => {
     try {
       await axios.post("http://localhost:5000/send-email", data);
-      alert("Email sent successfully");
+     navigate("/success")
     } catch (error) {
       console.error("There was an error sending the email:", error);
       alert("Failed to send email");

@@ -5,6 +5,7 @@ import { styled } from "@mui/system";
 import axios from "axios";
 import ClientsCarousal from "../home/ClientsCarousal";
 import {  useTheme as useMuiTheme } from '@mui/material/styles';
+import { useNavigate } from "react-router-dom";
 
 const FormContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -58,17 +59,18 @@ const PatnerWithUs = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const navigate=useNavigate()
   const onSubmit = async (data) => {
     try {
       await axios.post("http://localhost:5000/send-email", data);
-      alert("Email sent successfully");
+      navigate("/success")
      
     } catch (error) {
       console.error("There was an error sending the email:", error);
       alert("Failed to send email");
     }
   };
+ 
 
   return (
     <Stack>

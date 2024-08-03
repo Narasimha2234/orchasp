@@ -1,9 +1,9 @@
 
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import './App.css';
 import ThemeProviderComp from './components/ThemeProviderComp';
 import { Box } from '@mui/material';
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Header from './components/header/Header';
 import SideNav from './components/sidenav/SideNav';
 import Footer from './components/footer/Footer';
@@ -23,6 +23,7 @@ import PrivacyPolicy from './components/privacypolicy/PrivacyPolicy';
 import TermsOfUse from './components/termsofuse/TermsOfUSe';
 import LetsSpeak from './components/letsspeak/LetsSpeak';
 import PatnerWithUs from './components/patnerwithus/PatnerWithUs';
+import ThankYouPage from './components/thankyou/ThankYouPage';
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
         <Route path='/termsofuse' element={<TermsOfUse/>}/>
         <Route path='/letsSpeack' element={<LetsSpeak/>}/>
         <Route path='/contactus' element={<LetsSpeak/>}/>
+        <Route path='/success' element={<ThankYouPage/>}/>
         
        </Routes>
     </Box>
