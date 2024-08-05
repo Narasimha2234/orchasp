@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useSpring, animated } from 'react-spring';
+import { animated, useSpring } from 'react-spring';
+
 
 const AnimatedNumber = ({ number }) => {
 
@@ -18,6 +20,8 @@ const AnimatedNumber = ({ number }) => {
     });
   
     return <animated.div ref={ref}>{props.number.to(n => n.toFixed(0))}</animated.div>;
-  };
+  
+
+   };
 
   export default AnimatedNumber

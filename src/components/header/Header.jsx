@@ -9,6 +9,7 @@ import { useTheme } from '../ThemeProviderComp';
 import img from "../../assets/logo/ORCHASP Final Logo.png";
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import AnimatedText from '../AnimatedText';
 
 const Header = (props) => {
   const { toggleTheme, mode } = useTheme();
@@ -64,6 +65,7 @@ const Header = (props) => {
             <Btn  size='small' variant='text' color='inherit' component={Link} to={"/media"} sx={{ borderBottom: isCurrentPage("/media") ? '3px solid blue' : 'none',borderRadius:"0px"  }}
              variants={btnVarient}
             whileHover="whileHover"
+            drag
             >
            
               Media
