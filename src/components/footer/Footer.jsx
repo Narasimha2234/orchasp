@@ -73,13 +73,13 @@ const Footer = () => {
               <Typography variant="body2" color="textSecondary">
                 Telangana, INDIA.
               </Typography>
-              <Typography variant="body2" color="textSecondary">
+              <Typography variant="body2" color="black">
                 E: info@orchasp.com
               </Typography>
-              <Typography variant="body2" color="textSecondary">
+              <Typography variant="body2" color="black">
                 Tel: +91-40-4776 6123 / 124
               </Typography>
-              <Typography variant="body2" color="textSecondary">
+              <Typography variant="body2" color="black">
                 Fax: +91-40-4776 6143
               </Typography>
             </Stack>

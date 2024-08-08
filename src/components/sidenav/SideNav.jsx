@@ -75,14 +75,14 @@ const SideNav = ({ show, handleShow }) => {
               }}
               PaperProps={{
                 style: {
-                  width: '90%',
-                  maxWidth: '300px',
+                  width: '100%',
+                  maxWidth: '380px',
                   marginTop: '50px'
                 }
               }}
             >
               <MenuItem>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column' ,overflowX:"auto"}}>
                   <Typography component={"a"} href='https://www.induscargo.in/lander' target='_blank' sx={{ textDecoration: "none", padding: 1 }}>Cargo/Logistics services of small fleet operators</Typography>
                   <Typography component={"a"} href='http://www.induscrafts.in/' target='_blank' sx={{ textDecoration: "none", padding: 1 }}>Arts & Crafts ecommerce of niche arts and crafts</Typography>
                   <Typography component={"a"} href='about:blank' target='_blank' sx={{ textDecoration: "none", padding: 1 }}>Retail ecommerce aggregation of unorganised retail</Typography>

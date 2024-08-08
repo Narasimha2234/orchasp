@@ -52,9 +52,9 @@ const Careers = () => {
             }}
           ></Box>
           <Box sx={{ width: { xs: '100%', md: '58%' }, mt: 5 }}>
-            <Stack spacing={3} margin={{ xs: 2, md: 8 }}>
+            <Stack spacing={3} margin={{ xs: 2, md: 4}}>
               <Typography variant='h5' color={'primary'}>
-                Press Reports
+              Life at Orchasp
               </Typography>
               <Typography textAlign={'justify'}>
                 At Orchasp, we do things differently. We approach technology with intuition, and create solutions that make a difference. All this, while having a whole lot of fun!
@@ -69,12 +69,12 @@ const Careers = () => {
           </Box>
         </Box>
         <Divider variant='middle' sx={{ marginTop: '10px' }} />
-        <Box mt={10} mb={5}>
+        <Box mt={2} mb={5}>
           
           <Box sx={{ p: 3}}>
          
             <Stack spacing={3} alignItems="center">
-            <Typography variant='h5'> Careers at Orchasp</Typography>
+            <Typography variant='h4'> Careers at Orchasp</Typography>
               {careersData.map((career) => (
                 <CareerCard key={career.id} career={career} />
               ))}

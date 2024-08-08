@@ -42,10 +42,10 @@ const VideoSlider = ({ videos }) => {
   }, []);
 
   return (
-    <Box sx={{ position: 'relative', width: '100%', height: '80vh', mb: 2 }}>
+    <Box sx={{ position: 'relative', width: '100%', height: '75vh', mb: 2 }}>
       <Slider ref={sliderRef} {...settings}>
         {videos.map((video, index) => (
-          <Box key={index} sx={{ position: 'relative', height: '100%' }}>
+          <Box key={index} sx={{ position: 'relative', height: '100vh' }}>
             <video
               data-index={index}
               src={video.video}

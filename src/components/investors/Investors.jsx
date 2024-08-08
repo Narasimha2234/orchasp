@@ -28,15 +28,17 @@ const Investors = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          
         }} mb={10}
       >
         <Typography variant='h5' sx={{
           textAlign: "end",
-          paddingRight: "20px",
-          paddingTop: "300px",
-          fontSize: "30px",
+          paddingRight: "100px",
+          paddingTop: "150px",
+          fontSize: "28px",
           fontStyle: "bold",
-          color:"white"
+          color:"black",
+          // backgroundColor: 'rgba(0, 0, 0, 0.5)',
         }}>
           Hello There, Investor. Or Should We Say Partner-In- Engineering Businesses Real Time?
         </Typography>
@@ -65,6 +67,7 @@ const Investors = () => {
       </Box>
 
       <Box sx={{ width: "80%", margin: "auto" }}>
+        <Typography variant='h5' ml={2}>Annual Reports</Typography>
         <AnnualReportsCarousal />
       </Box>
       <Box mt={10} mb={10}>

@@ -30,9 +30,9 @@ const WithResultsWeRise = ()=>{
       }
    }
     return(
-    <Box ref={ref} sx={{ width: '90%', height: "65vh", margin: "auto", borderBottom: "1px solid", overflowX: "hidden", marginTop: "20px" }}>
+    <Box ref={ref} sx={{ width: '90%', height: "65vh", margin: "auto", borderBottom: "1px solid", overflowX: "hidden", marginTop: 5 }}>
       <Box sx={{ textAlign: "center", marginBottom: 5 }}>
-        <Typography variant='h4' color="primary">With Results, We Rise.</Typography>
+        <Typography variant='h4' color="primary" fontSize={"1.8rem"} fontFamily={"Montserrat-Medium"}>With Results, We Rise.</Typography>
         <Typography variant='h6' mt={2} mx={{ xs: 2, sm: 9 }}>
           Our solutions don’t just help consumers or businesses, they help bring about change and make an impact.
           But don’t just take our word for it, check out our case studies.

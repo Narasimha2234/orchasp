@@ -61,12 +61,12 @@ const Media = () => {
             }}
             mt={5}
           />
-          <Box sx={{ width: { xs: '100%', sm: '58%' }, mt: 5 }}>
-            <Stack spacing={3} margin={8}>
-              <Typography variant='h5' color={'primary'}>
+          <Box sx={{ width: { xs: '100%', sm: '58%' }, mt: 4 }}>
+            <Stack spacing={3} margin={3}>
+              <Typography variant='h4' color={'primary'}>
                 Press Reports
               </Typography>
-              <Typography textAlign={'justify'}>
+              <Typography textAlign={'justify'} variant='h6' lineHeight={2}>
                 We are pleased to inform the members that the company has been approved by Centre for Railway Information Systems (CRIS), New Delhi for providing IT Services. CRIS have released their first contract for conversion of Freight Operating Information System (FOIS) from existing VB application to Web Based model.
               </Typography>
             </Stack>

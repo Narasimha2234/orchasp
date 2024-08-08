@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
-import { AppBar, Box, Button, IconButton, Menu, MenuItem, Stack, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, IconButton, Stack, Toolbar, Typography } from '@mui/material';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import MenuIcon from '@mui/icons-material/Menu';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
 import { useTheme } from '../ThemeProviderComp';
 import img from "../../assets/logo/ORCHASP Final Logo.png";
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import AnimatedText from '../AnimatedText';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import BusinessIcon from '@mui/icons-material/Business';
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
+import TheatersIcon from '@mui/icons-material/Theaters';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import WorkIcon from '@mui/icons-material/Work';
+import AnimatedText from './../AnimatedText';
+import AppsIcon from '@mui/icons-material/Apps';
 
 const Header = (props) => {
   const { toggleTheme, mode } = useTheme();
@@ -17,194 +28,289 @@ const Header = (props) => {
   const theme = useMuiTheme();
   const location = useLocation();
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [showPlatformMenu, setShowPlatformMenu] = useState(false);
+  const [subMenu, setSubMenu] = useState(null);
 
-  const handleMouseEnter = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handlePlatformEnter = () => {
+    setShowPlatformMenu(true);
   };
 
-  const handleMouseLeave = () => {
-    setAnchorEl(null);
+  const handlePlatformLeave = () => {
+    setShowPlatformMenu(false);
+    setSubMenu(null);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
+  const handleSubMenuEnter = (menu) => {
+    setSubMenu(menu);
+  };
+
+  const handleSubMenuLeave = () => {
+    setSubMenu(null);
   };
 
   const isCurrentPage = (path) => {
     return location.pathname === path;
   };
-  const Btn=motion(Button)
-  const btnVarient={
-    whileHover:{
-      color:"blue",
-      y:-10,
-      transition:{
-        duration:1,
-        type:"spring",
-        stiffness:"190"
-      }
-    }
-  }
+
+  const Btn = motion(Button);
+  const btnVariant = {
+    whileHover: {
+      color: "blue",
+      y: -10,
+      transition: {
+        duration: 1,
+        type: "spring",
+        stiffness: 190,
+      },
+    },
+  };
+
+  const renderSubMenuLinks = (menu) => {
+    const links = {
+      logistics: [
+        { name: 'Cargo/Logistics services of small fleet operators', url: 'https://www.induscargo.in/lander' },
+       
+      ],
+      eCommerce: [
+        { name: 'Arts & Crafts ecommerce of niche arts and crafts', url: 'http://www.induscrafts.in/' },
+        {name:"Retail ecommerce aggregation of unorganised retail",url:"https://www.indusretail.in/lander"},
+        {name:"B2B Marketplace aggregation of b2b goods and services",url:"https://www.indusnetworx.in/lander"}
+        
+      ],
+      healthCare: [
+        { name: 'electronic health records repository', url: 'https://www.indusayush.in/' },
+        {name:"Retail ecommerce aggregation of unorganised retail",url:"https://www.indusretail.in/lander"}
+       
+      ],
+      education: [
+        { name: 'ELearning aggregation of informal learning', url: 'https://www.indusmaster.in/lander' },
+       
+      ],
+      publication: [
+        { name: 'content management', url: 'https://www.indusmatter.in/lander' },
+       
+      ]
+    };
+    return (
+      <Box sx={{
+        position: 'absolute',
+        top: 0,
+        left: '200px',
+        width: '300px',
+        backgroundColor: 'white',
+        zIndex: 2,
+        boxShadow: theme.shadows[3],
+        borderRadius: 3,
+        padding: 2,
+      }}>
+        <Stack spacing={2}>
+          {links[menu]?.map((link, index) => (
+            <Typography key={index} component="a" href={link.url} target="_blank"
+             sx={{ 
+               textDecoration: 'none', 
+               color: 'inherit' ,
+               p:1,
+               "&:hover":{
+                backgroundColor:"whitesmoke",
+                borderRadius:3
+               }
+               }}>
+              {link.name}
+            </Typography>
+          ))}
+        </Stack>
+      </Box>
+    );
+  };
+
+  const platformStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    position: "relative",
+    borderRadius:3
+    
+  };
+
   return (
     <AppBar component="nav" sx={{ backgroundColor: theme.palette.background.default, color: theme.palette.text.primary }}>
       <Toolbar>
         <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, textDecoration: "none", color: "inherit" }} component={Link} to={"/"}>
           <Stack direction={"row"} spacing={2} alignItems="center">
-            <Box
-              component="img"
-              src={img}
-              alt="Logo"
-              sx={{ height: 110 }}
-            />
+            <Box component="img" src={img} alt="Logo" sx={{ height: 110 }} />
             <Typography variant="h5" color={"primary"} fontWeight={"bold"} fontSize={30}>Orchasp Limited</Typography>
           </Stack>
         </Box>
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexDirection: 'column', alignItems: 'flex-end' }}>
           <Stack direction="row" spacing={3} sx={{ mt: 1 }}>
-            <Btn  size='small' variant='text' color='inherit' component={Link} to={"/media"} sx={{ borderBottom: isCurrentPage("/media") ? '3px solid blue' : 'none',borderRadius:"0px"  }}
-             variants={btnVarient}
-            whileHover="whileHover"
-            drag
-            >
-           
+            <Btn size='small' variant='text' color='inherit' component={Link} to={"/media"} sx={{ borderBottom: isCurrentPage("/media") ? '3px solid blue' : 'none', borderRadius: "0px", "&:hover":{
+                    color:"blue"
+                  } }}
+             
+            > 
               Media
             </Btn>
+            <Btn size='small' variant='text' color='inherit' component={Link} to={"/careers"} sx={{ borderBottom: isCurrentPage("/careers") ? '3px solid blue' : 'none', borderRadius: "0px","&:hover":{
+                    color:"blue"
+                  } }}
             
-            <Btn  size='small' variant='text' color='inherit' component={Link} to={"/careers"} sx={{ borderBottom: isCurrentPage("/careers") ? '3px solid blue' : 'none',borderRadius:"0px"  }}
-             variants={btnVarient}
-            whileHover="whileHover"
             >
+             
               Careers
             </Btn>
           </Stack>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end' }} mb={1}>
             <Btn
-             variants={btnVarient}
-            whileHover="whileHover"
+              
               color='inherit'
               component={Link}
               to={"/"}
-              sx={{ borderBottom: isCurrentPage("/") ? '3px solid blue' : 'none' ,ml:1,borderRadius:"0px" }}
+              sx={{ borderBottom: isCurrentPage("/") ? '3px solid blue' : 'none', ml: 1, borderRadius: "0px","&:hover":{
+                    color:"blue"
+                  } }}
               size='small'
-              
-            >
-              home
+            > 
+              Home
             </Btn>
             <Btn
-             variants={btnVarient}
-             whileHover="whileHover"
              
-              
-             size='small'
+              size='small'
               color='inherit'
               component={Link}
               to={"/about"}
-              sx={{ borderBottom: isCurrentPage("/about") ? '3px solid blue' : 'none',ml:1 ,borderRadius:"0px" }}
-            >
-              about Us
+              sx={{ borderBottom: isCurrentPage("/about") ? '3px solid blue' : 'none', ml: 1, borderRadius: "0px","&:hover":{
+                    color:"blue"
+                  } }}
+            > 
+              About Us
             </Btn>
             <Btn
-            variants={btnVarient}
-             whileHover="whileHover"
-             size='small'
+             
+              size='small'
               color='inherit'
               component={Link}
               to={"/investors"}
-              sx={{ borderBottom: isCurrentPage("/investors") ? '3px solid blue' : 'none',ml:1 ,borderRadius:"0px" }}
-            >
+              sx={{ borderBottom: isCurrentPage("/investors") ? '3px solid blue' : 'none', ml: 1, borderRadius: "0px","&:hover":{
+                    color:"blue"
+                  } }}
+            > 
               Investors
             </Btn>
-            
             <Btn
-             variants={btnVarient}
-            whileHover="whileHover"
-             size='small'
+              
+              size='small'
               color='inherit'
               component={Link}
               to={"/industries"}
-              sx={{ borderBottom: isCurrentPage("/industries") ? '3px solid blue' : 'none',ml:1 ,borderRadius:"0px" }}
-            >
+              sx={{ borderBottom: isCurrentPage("/industries") ? '3px solid blue' : 'none', ml: 1, borderRadius: "0px" ,"&:hover":{
+                    color:"blue"
+                  }}}
+            > 
               Industries
             </Btn>
             <Btn
-             variants={btnVarient}
-            whileHover="whileHover"
+             
               color='inherit'
-               size='small'
+              size='small'
               component={Link}
               to={"/services"}
-              sx={{ borderBottom: isCurrentPage("/services") ? '3px solid blue' : 'none' ,ml:1,borderRadius:"0px" }}
-            >
-              services
+              sx={{ borderBottom: isCurrentPage("/services") ? '3px solid blue' : 'none', ml: 1, borderRadius: "0px" ,"&:hover":{
+                    color:"blue"
+                  }}}
+            > 
+              Services
             </Btn>
-            <Box
-             
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
+            <Box onMouseEnter={handlePlatformEnter} onMouseLeave={handlePlatformLeave} sx={{ position: 'relative' }}>
               <Btn
-               variants={btnVarient}
-                whileHover="whileHover"
+                
                 color='inherit'
-                 size='small'
+                size='small'
                 disableElevation={true}
-                aria-controls={anchorEl ? 'platform-menu' : undefined}
-                aria-haspopup="true"
-              >
+                sx={{
+                  "&:hover":{
+                    color:"blue"
+                  }
+                }}
+              > 
                 Platform<ArrowDropDownIcon />
               </Btn>
-              <Menu
-                id="platform-menu"
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-                MenuListProps={{
-                  'aria-labelledby': 'platform-button',
-                  onMouseLeave: handleMenuClose
-                }}
-              >
-                <MenuItem sx={{ width: "900px", backgroundColor: "white" }}>
-                  <Box sx={{ height: "300px", width: "98%", display: "flex", margin: "auto", justifyContent: "space-around", backgroundColor: "white" }}>
-                    <Box sx={{ width: "48%" }}>
-                      <Stack spacing={4} mt={8} ml={1}>
-                        <Typography component={"a"} href='https://www.induscargo.in/lander' target='_blank' sx={{ textDecoration: "none" }}>Cargo/Logistics services of small fleet operators</Typography>
-                        <Typography component={"a"} href='http://www.induscrafts.in/' target='_blank' sx={{ textDecoration: "none" }}>Arts & Crafts ecommerce of niche arts and crafts</Typography>
-                        <Typography component={"a"} href='about:blank' target='_blank' sx={{ textDecoration: "none" }}>Retail ecommerce aggregation of unorganised retail</Typography>
-                        <Typography component={"a"} href='http://www.induskare.in/' target='_blank' sx={{ textDecoration: "none" }}>Healthcare aggregation of health emergency services</Typography>
-                      </Stack>
-                    </Box>
-                    <Box sx={{ width: "48%", textDecoration: "none" }}>
-                      <Stack spacing={4} mt={8} ml={1}>
-                        <Typography component={"a"} href='about:blank' target='_blank' sx={{ textDecoration: "none" }}>ELearning aggregation of informal learning</Typography>
-                        <Typography component={"a"} href='about:blank' target='_blank' sx={{ textDecoration: "none" }}>B2B Marketplace aggregation of b2b goods and services</Typography>
-                        <Typography component={"a"} href='https://www.indusayush.in/' target='_blank' sx={{ textDecoration: "none" }}>electronic health records repository</Typography>
-                        <Typography component={"a"} href='about:blank' target='_blank' sx={{ textDecoration: "none" }}>content management</Typography>
-                      </Stack>
-                    </Box>
-                  </Box>
-                </MenuItem>
-              </Menu>
+              {showPlatformMenu && (
+                <Box 
+                  sx={{
+                    position: 'absolute',
+                    top: 30,
+                    right: 0,
+                    width: '200px',
+                    backgroundColor: 'white',
+                    zIndex: 1,
+                    boxShadow: theme.shadows[3],
+                    borderRadius: 3,
+                    
+                  }}
+                >
+                  <Stack spacing={2} pt={1}>
+                    <Typography bgcolor={`${subMenu==="logistics" ?"whitesmoke":""}`} pl={2}  sx={platformStyle} onMouseEnter={() => handleSubMenuEnter('logistics')} onMouseLeave={handleSubMenuLeave}>
+                      Logistics
+                      <IconButton>
+                        <KeyboardArrowRightIcon  />
+                      </IconButton>
+                      {subMenu === 'logistics' && renderSubMenuLinks('logistics')}
+                    </Typography>
+                    <Typography bgcolor={`${subMenu==="eCommerce" ?"whitesmoke":""}`}  pl={2}  sx={platformStyle} onMouseEnter={() => handleSubMenuEnter('eCommerce')} onMouseLeave={handleSubMenuLeave}>
+                      eCommerce
+                      <IconButton>
+                        <KeyboardArrowRightIcon />
+                      </IconButton>
+                      {subMenu === 'eCommerce' && renderSubMenuLinks('eCommerce')}
+                    </Typography>
+                    <Typography bgcolor={`${subMenu==="healthCare" ?"whitesmoke":""}`}  pl={2}  sx={platformStyle} onMouseEnter={() => handleSubMenuEnter('healthCare')} onMouseLeave={handleSubMenuLeave}>
+                      Health Care
+                      <IconButton>
+                        <KeyboardArrowRightIcon />
+                      </IconButton>
+                      {subMenu === 'healthCare' && renderSubMenuLinks('healthCare')}
+                    </Typography>
+                    <Typography bgcolor={`${subMenu==="education" ?"whitesmoke":""}`}  pl={2}  sx={platformStyle} onMouseEnter={() => handleSubMenuEnter('education')} onMouseLeave={handleSubMenuLeave}>
+                      Education
+                      <IconButton>
+                        <KeyboardArrowRightIcon />
+                      </IconButton>
+                      {subMenu === 'education' && renderSubMenuLinks('education')}
+                    </Typography>
+                    <Typography bgcolor={`${subMenu==="publication" ?"whitesmoke":""}`} pl={2}  sx={platformStyle} onMouseEnter={() => handleSubMenuEnter('publication')} onMouseLeave={handleSubMenuLeave}>
+                      Publication
+                      <IconButton>
+                        <KeyboardArrowRightIcon />
+                      </IconButton>
+                      {subMenu === 'publication' && renderSubMenuLinks('publication')}
+                    </Typography>
+                  </Stack>
+                </Box>
+              )}
             </Box>
             <Btn
-             variants={btnVarient}
-            whileHover="whileHover"
+             
               color='inherit'
-               size='small'
+              size='small'
               component={Link}
               to={"/knowledge"}
-              sx={{ borderBottom: isCurrentPage("/knowledge") ? '3px solid blue' : 'none' ,ml:1,borderRadius:"0px" }}
+              sx={{ borderBottom: isCurrentPage("/knowledge") ? '3px solid blue' : 'none', ml: 1, borderRadius: "0px","&:hover":{
+                    color:"blue"
+                  } }}
             >
+             
               Knowledge Hub
             </Btn>
             <Btn component={Link} to="/letsSpeack"
-             variants={btnVarient}
-            whileHover="whileHover"
+             
               color='inherit'
-               size='small'
-              sx={{ borderBottom: isCurrentPage("/letsSpeack") ? '3px solid blue' : 'none',ml:1,borderRadius:"0px" }}
+              size='small'
+              sx={{ borderBottom: isCurrentPage("/letsSpeack") ? '3px solid blue' : 'none', ml: 1, borderRadius: "0px","&:hover":{
+                    color:"blue"
+                  } }}
             >
-              let's Speak
+              
+              Let's Speak
             </Btn>
           </Box>
         </Box>

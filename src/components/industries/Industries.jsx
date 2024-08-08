@@ -53,6 +53,7 @@ const IndustriesComp = () => {
             </Box>
 
             <Box sx={{ padding: { xs: 2, md: 4 }, backgroundColor: "skyblue" }}>
+                <Typography variant='h4' textAlign={"center"} color={"blue"}>Today, Orchasp’s Offerings Include Technology Services Such <br/> As</Typography>
                 {Industries.map((service, index) => (
                     <Box
                         key={service.id}
@@ -66,6 +67,7 @@ const IndustriesComp = () => {
                             mb: 4,
                             backgroundColor: "transparent",
                             textAlign: "center",
+                            mt:6
                         }}
                     >
                         <Box
@@ -165,12 +167,12 @@ const IndustriesComp = () => {
                 <Box
                     sx={{
                         backgroundColor: "#0c4aa7",
-                        padding: { xs: 2, sm: 3, md: 4 },
+                        padding: { xs: 2, sm: 3, md: 1 },
                         textAlign: "center",
                     }}
                 >
                     <Typography
-                        m={{ xs: 1, sm: 2, md: 4 }}
+                        m={{ xs: 1, sm: 2, md: 1 }}
                         color={"skyblue"}
                         variant={"h4"}
                     >
@@ -179,53 +181,53 @@ const IndustriesComp = () => {
                 </Box>
 
                 <Box
-                    display={"flex"}
-                    flexDirection={{ xs: "column", sm: "row" }}
-                    sx={{
-                        backgroundColor: "#0c4aa7",
-                        padding: { xs: 2, sm: 3, md: 4 },
-                    }}
-                >
-                    <Stack
-                        m={{ xs: 2, sm: 2 }}
-                        sx={{
-                            alignItems: "center",
-                        }}
-                    >
-                        <Box sx={{ height: "370px", width: "370px" }}>
-                            <Box
-                                component={"img"}
-                                src="https://orchasp.com/wp-content/uploads/2021/07/Image-09-2.png"
-                                alt=""
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                }}
-                            />
-                        </Box>
-                    </Stack>
-                    <Stack
-                        mt={{ xs: 2, sm: 4, md: 13 }}
-                        pl={{ xs: 2, sm: 4, md: 7 }}
-                        pr={{ xs: 2, sm: 4, md: 15 }}
-                        textAlign={{ sm: "justify" }}
-                    >
-                        <Typography
-                            fontSize={{ xs: 14, sm: 16, md: 18 }}
-                            lineHeight={1.6}
-                            color={"white"}
-                            variant={"body2"}
-                            component={"p"}
-                        >
-                            We assess business needs of our clients and help rescale resources
-                            to meet goals at a fast-tracked pace. We align processes with an
-                            extended team with specialized skillsets, which includes
-                            development, feedback, and end-to-end project completion. Our
-                            Staff Augmentation Solutions help reduce operational costs, while
-                            ensuring flexibility and scalability.
-                        </Typography>
-                    </Stack>
-                </Box>
+          display={"flex"}
+          flexDirection={{ xs: "column", sm: "row" }}
+          sx={{
+            backgroundColor: "#0c4aa7",
+            padding: { xs: 2, sm: 3, md: 1 },
+          }}
+        >
+          <Stack
+            m={{ xs: 2, sm: 2 }}
+            sx={{
+              alignItems: "center",
+            }}
+          >
+            <Box sx={{ height: "400px", width: "400px" }}>
+              <Box
+                component={"img"}
+                src="https://orchasp.com/wp-content/uploads/2021/07/Image-09-2.png"
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </Box>
+          </Stack>
+          <Stack
+            mt={{ xs: 2, sm: 4, md: 3 }}
+            pl={{ xs: 2, sm: 4, md: 7 }}
+            pr={{ xs: 2, sm: 4, md: 15 }}
+            textAlign={{ sm: "justify" }} 
+          >
+            <Typography
+              fontSize={{ xs: 14, sm: 16, md: 18 }}
+              lineHeight={2}
+              color={"white"}
+              variant={"body2"}
+              component={"p"}
+            >
+              We assess business needs of our clients and help rescale resources
+              to meet goals at a fast-tracked pace. We align processes with an
+              extended team with specialized skillsets, which includes
+              development, feedback, and end-to-end project completion. Our
+              Staff Augmentation Solutions help reduce operational costs, while
+              ensuring flexibility and scalability.
+            </Typography>
+          </Stack>
+        </Box>
             </Box>
         </Box>
     )

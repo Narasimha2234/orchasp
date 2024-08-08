@@ -158,11 +158,11 @@ const Service = () => {
         <Box
           sx={{
             backgroundColor: "#0c4aa7",
-            padding: { xs: 2, sm: 3, md: 4 },
+            padding: { xs: 2, sm: 3, md: 1 },
             textAlign: "center", 
           }}
         >
-          <Typography m={{ xs: 1, sm: 2, md: 4 }} color={"skyblue"} variant={"h4"}>
+          <Typography m={{ xs: 1, sm: 2, md: 1 }} color={"skyblue"} variant={"h4"}>
             Extend Capabilities With Staff
           </Typography>
         </Box>
@@ -172,7 +172,7 @@ const Service = () => {
           flexDirection={{ xs: "column", sm: "row" }}
           sx={{
             backgroundColor: "#0c4aa7",
-            padding: { xs: 2, sm: 3, md: 4 },
+            padding: { xs: 2, sm: 3, md: 1 },
           }}
         >
           <Stack
@@ -181,7 +181,7 @@ const Service = () => {
               alignItems: "center",
             }}
           >
-            <Box sx={{ height: "370px", width: "370px" }}>
+            <Box sx={{ height: "400px", width: "400px" }}>
               <Box
                 component={"img"}
                 src="https://orchasp.com/wp-content/uploads/2021/07/Image-09-2.png"
@@ -194,14 +194,14 @@ const Service = () => {
             </Box>
           </Stack>
           <Stack
-            mt={{ xs: 2, sm: 4, md: 13 }}
+            mt={{ xs: 2, sm: 4, md: 3 }}
             pl={{ xs: 2, sm: 4, md: 7 }}
             pr={{ xs: 2, sm: 4, md: 15 }}
             textAlign={{ sm: "justify" }} 
           >
             <Typography
               fontSize={{ xs: 14, sm: 16, md: 18 }}
-              lineHeight={1.6}
+              lineHeight={2}
               color={"white"}
               variant={"body2"}
               component={"p"}

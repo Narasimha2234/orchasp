@@ -77,7 +77,7 @@ const About = () => {
         </Box>     
       </Box>
       <Box sx={{ backgroundColor:"#92E2FF" }}>
-        <Box sx={{ width: "65%", margin: "auto", mb: 1 }}>
+        <Box sx={{ width: "65%", margin: "auto", mb: 1,pt:6 }}>
           <Typography variant='h4' textAlign={"center"} color={"primary"}>Today, Orchasp’s Offerings Include Technology Services Such As</Typography>
         </Box>
         <Box sx={{ width: "90%", margin: "auto", mt: 5, display: "flex", flexWrap: "wrap" }}>

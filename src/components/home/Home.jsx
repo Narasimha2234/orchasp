@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <Box sx={{ width: "100%" }}>
       <HomeVideoSlider videos={bannerVideos} />
-      <Box sx={{ mt: { xs: "-520px", sm: 4, md: 27 } }}>
+      <Box sx={{ mt: { xs: "-520px", sm: 4, md: 24} }}>
         <FutureBlock/>
       </Box>
       <Box sx={{ height: { xs: "auto", sm: "75vh" }, width: "100%", backgroundColor: "#92E2FF", py: { xs: 4, sm: 6 } }}>
