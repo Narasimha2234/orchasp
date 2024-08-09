@@ -6,24 +6,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
-import { useTheme } from '../ThemeProviderComp';
+
 import img from "../../assets/logo/ORCHASP Final Logo.png";
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import HomeIcon from '@mui/icons-material/Home';
-import InfoIcon from '@mui/icons-material/Info';
-import HandshakeIcon from '@mui/icons-material/Handshake';
-import BusinessIcon from '@mui/icons-material/Business';
-import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
-import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
-import TheatersIcon from '@mui/icons-material/Theaters';
-import PsychologyIcon from '@mui/icons-material/Psychology';
-import WorkIcon from '@mui/icons-material/Work';
-import AnimatedText from './../AnimatedText';
-import AppsIcon from '@mui/icons-material/Apps';
+
 
 const Header = (props) => {
-  const { toggleTheme, mode } = useTheme();
+ 
   const { handleShow } = props;
   const theme = useMuiTheme();
   const location = useLocation();
@@ -95,13 +85,13 @@ const Header = (props) => {
       <Box sx={{
         position: 'absolute',
         top: 0,
-        left: '200px',
-        width: '300px',
+        left: '180px',
+        width: '240px',
         backgroundColor: 'white',
         zIndex: 2,
         boxShadow: theme.shadows[3],
         borderRadius: 3,
-        padding: 2,
+       p:1
       }}>
         <Stack spacing={2}>
           {links[menu]?.map((link, index) => (
@@ -240,7 +230,7 @@ const Header = (props) => {
                     position: 'absolute',
                     top: 30,
                     right: 0,
-                    width: '200px',
+                    width: '180px',
                     backgroundColor: 'white',
                     zIndex: 1,
                     boxShadow: theme.shadows[3],
@@ -257,7 +247,7 @@ const Header = (props) => {
                       {subMenu === 'logistics' && renderSubMenuLinks('logistics')}
                     </Typography>
                     <Typography bgcolor={`${subMenu==="eCommerce" ?"whitesmoke":""}`}  pl={2}  sx={platformStyle} onMouseEnter={() => handleSubMenuEnter('eCommerce')} onMouseLeave={handleSubMenuLeave}>
-                      eCommerce
+                      e-Commerce
                       <IconButton>
                         <KeyboardArrowRightIcon />
                       </IconButton>
@@ -317,15 +307,7 @@ const Header = (props) => {
         <IconButton color='inherit' onClick={handleShow} sx={{ display: { sm: 'none' } }}>
           <MenuIcon />
         </IconButton>
-        <IconButton
-          color='inherit'
-          edge="end"
-          sx={{ ml: 2 }}
-          size='large'
-          onClick={toggleTheme}
-        >
-          {mode === "light" ? <Brightness5Icon /> : <Brightness4Icon />}
-        </IconButton>
+       
       </Toolbar>
     </AppBar>
   );

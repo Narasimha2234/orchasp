@@ -31,7 +31,7 @@ const Footer = () => {
         backgroundPosition: "center",
         py: { xs: 3, md: 6 },
         px: { xs: 2, sm: 3 },
-        width: "100%",
+        width: "90%",
       }} 
     >
       <Divider variant="middle" sx={{ border: "2px solid skyblue" }} />

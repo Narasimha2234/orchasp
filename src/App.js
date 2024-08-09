@@ -1,7 +1,6 @@
 
 import {  useState } from 'react';
 import './App.css';
-import ThemeProviderComp from './components/ThemeProviderComp';
 import { Box } from '@mui/material';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Header from './components/header/Header';
@@ -33,7 +32,7 @@ function App() {
       setShow(!show)
    }
   return (
-    <ThemeProviderComp>
+    
   
     <BrowserRouter>
    
@@ -68,7 +67,7 @@ function App() {
    </Box>
     </Box>
     </BrowserRouter>
-   </ThemeProviderComp>
+  
   );
 }
 
