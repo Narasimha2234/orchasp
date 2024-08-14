@@ -128,7 +128,7 @@ const Header = (props) => {
         <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, textDecoration: "none", color: "inherit" }} component={Link} to={"/"}>
           <Stack direction={"row"} spacing={2} alignItems="center">
             <Box component="img" src={img} alt="Logo" sx={{ height: 110 }} />
-            <Typography variant="h5" color={"primary"} fontWeight={"bold"} fontSize={30}>Orchasp Limited</Typography>
+            <Typography variant="h5" color={"primary"} fontWeight={"bold"} fontSize={{md:30 ,sx:20}}>Orchasp Limited</Typography>
           </Stack>
         </Box>
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexDirection: 'column', alignItems: 'flex-end' }}>
